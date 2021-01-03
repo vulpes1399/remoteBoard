@@ -1,0 +1,11 @@
+package test.remote.board.service;
+
+import java.util.List;
+
+import test.remote.board.domain.Board;
+
+public interface BoardService {
+	public int getBoardListCount(String error_type, String sector) throws Exception;
+	public List<Board> getBoardDetailList(String error_type, String sector, int offset, int listCount);
+	
+}

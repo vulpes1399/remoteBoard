@@ -1,0 +1,5 @@
+package test.remote.board.dao.impl;
+
+public class BoardImpl {
+
+}

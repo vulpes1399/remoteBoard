@@ -1,0 +1,13 @@
+package test.remote.board.domain;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.util.CollectionUtils;
+
+import lombok.Data;
+
+@Data
+public class board {
+
+}

@@ -1,0 +1,13 @@
+1609299087186	Rename package 'com.example.demo'
+1609301417686	Delete element
+1609301430389	Delete element
+1609303358342	Move file
+1609309081827	Copy file
+1609309086281	Rename resource 'index.jsp'
+1609334821876	Rename type 'boardContoller'
+1609334828589	Rename type 'board'
+1609334834415	Rename type 'boardService'
+1609334839261	Rename type 'boardServiceImpl'
+1609334851463	Rename type 'Board'
+1609334856071	Rename type 'BoardImpl'
+1609404892095	Rename type 'paging'

@@ -1,0 +1,8 @@
+package test.remote.board.service;
+
+
+public interface BoardService {
+	
+	public String getBoardDetailList(String error_type);
+	
+}

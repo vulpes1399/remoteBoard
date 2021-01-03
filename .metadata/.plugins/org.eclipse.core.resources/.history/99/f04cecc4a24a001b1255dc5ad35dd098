@@ -1,0 +1,7 @@
+package test.remote.board.dao;
+
+import java.util.List;
+
+public interface Board {
+	List<Board> selectBoardList();
+}

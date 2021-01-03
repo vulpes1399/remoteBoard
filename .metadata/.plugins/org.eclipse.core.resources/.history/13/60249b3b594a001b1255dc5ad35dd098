@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="lazyLoadingEnabled" value="true"/>
+	</settings>
+	<typeAliases>
+		<package name="smart.pole.monitoring.domain"/>
+	</typeAliases>
+	<typeHandlers>
+  		<typeHandler handler="org.apache.ibatis.type.InstantTypeHandler" />
+		<typeHandler handler="org.apache.ibatis.type.LocalDateTimeTypeHandler" />
+		<typeHandler handler="org.apache.ibatis.type.LocalDateTypeHandler" />
+		<typeHandler handler="org.apache.ibatis.type.LocalTimeTypeHandler" />
+		<typeHandler handler="org.apache.ibatis.type.OffsetDateTimeTypeHandler" />
+		<typeHandler handler="org.apache.ibatis.type.OffsetTimeTypeHandler" />
+		<typeHandler handler="org.apache.ibatis.type.ZonedDateTimeTypeHandler" />
+		<typeHandler handler="org.apache.ibatis.type.YearTypeHandler" />
+		<typeHandler handler="org.apache.ibatis.type.MonthTypeHandler" />
+		<typeHandler handler="org.apache.ibatis.type.YearMonthTypeHandler" />
+	</typeHandlers>
+	<mappers>
+		<mapper resource="mysql_mapper/AuthorizeMapper.xml"/>
+		<mapper resource="mysql_mapper/ManageMapper.xml"/>
+		<mapper resource="mysql_mapper/MasterMapper.xml"/>
+		<mapper resource="mysql_mapper/SystemMapper.xml"/>
+		<mapper resource="mysql_mapper/DimmingMapper.xml"/>
+		<mapper resource="mysql_mapper/ServiceMapper.xml"/>
+		<mapper resource="mysql_mapper/SectorMapper.xml"/>
+		<mapper resource="mysql_mapper/WorkMapMapper.xml"/>
+		<mapper resource="mysql_mapper/ResourceMapper.xml"/>
+		<mapper resource="mysql_mapper/CodeMapper.xml"/>
+		<mapper resource="mysql_mapper/CodeSectorMapper.xml"/>
+		<mapper resource="mysql_mapper/TroubleMapper.xml"/>
+		<mapper resource="mysql_mapper/DeviceMapper.xml"/>
+		<mapper resource="mysql_mapper/LampClassifyMapper.xml"/>
+		<mapper resource="mysql_mapper/DeviceClassifyMapper.xml"/>
+		<mapper resource="mysql_mapper/MasterPropertyMapper.xml"/>
+		<mapper resource="mysql_mapper/MasterNumberCountMapper.xml"/>
+		<mapper resource="mysql_mapper/ReportMapper.xml"/>
+		<mapper resource="mysql_mapper/MasterLightPoleMapper.xml"/>
+		<mapper resource="mysql_mapper/MasterDeviceMapper.xml"/>
+		<mapper resource="mysql_mapper/MasterLightPoleLocationMapper.xml"/>
+		<mapper resource="mysql_mapper/MasterLocaleMapper.xml"/>
+		<mapper resource="mysql_mapper/DashboardElectronicUseMapper.xml"/>
+		<mapper resource="mysql_mapper/DashboardTrafficMapper.xml"/>
+		<mapper resource="mysql_mapper/TestMapper.xml"/>
+		<mapper resource="mysql_mapper/DashboardTroubleMapper.xml"/>
+		<mapper resource="mysql_mapper/DashboardAlarmMapper.xml"/>
+	</mappers>
+</configuration>

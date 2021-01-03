@@ -1,0 +1,12 @@
+package test.remote.board.domain;
+
+import lombok.Data;
+
+@Data
+public class Board {
+	int id;
+	String error_type;
+	String sector;
+	String text3;
+	String text4;
+}

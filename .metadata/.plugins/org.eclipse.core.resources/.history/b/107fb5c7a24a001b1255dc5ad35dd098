@@ -1,0 +1,20 @@
+package test.remote.board.dao.impl;
+
+import java.util.List;
+
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import test.remote.board.dao.BoardDao;
+
+public class BoardImpl implements BoardDao{
+
+	@Autowired
+	private SqlSessionTemplate sqlTemplate;
+
+	@Override
+	public List<BoardDao> selectBoardList() {
+		return sqlTemplate.selectList("selectBoardList");
+	}
+
+}

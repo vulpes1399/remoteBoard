@@ -1,0 +1,21 @@
+package test.remote.board;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@SpringBootApplication
+public class RemoteBoardApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(RemoteBoardApplication.class, args);
+	}
+	
+	
+	@RequestMapping(value="/")
+	public String mainPage() {
+		return "index";
+	}
+
+
+}

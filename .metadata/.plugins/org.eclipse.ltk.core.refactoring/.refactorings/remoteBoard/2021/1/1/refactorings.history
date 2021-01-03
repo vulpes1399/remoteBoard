@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename method &apos;test.remote.board.dao.BoardDao.selectBoardDetailList(...)&apos; to &apos;selectBoardAjaxList&apos;&#x0D;&#x0A;- Original project: &apos;remoteBoard&apos;&#x0D;&#x0A;- Original element: &apos;test.remote.board.dao.BoardDao.selectBoardDetailList(...)&apos;&#x0D;&#x0A;- Renamed element: &apos;test.remote.board.dao.BoardDao.selectBoardAjaxList(...)&apos;&#x0D;&#x0A;- Update references to refactored element" delegate="false" deprecate="false" description="Rename method &apos;selectBoardDetailList&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.method" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;test.remote.board.dao{BoardDao.java[BoardDao~selectBoardDetailList~QString;~QString;~I~I" name="selectBoardAjaxList" references="true" stamp="1609601345844" version="1.0"/>
+</session>

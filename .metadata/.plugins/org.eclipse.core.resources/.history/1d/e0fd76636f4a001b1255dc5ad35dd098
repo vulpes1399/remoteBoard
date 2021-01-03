@@ -1,0 +1,5 @@
+package test.remote.board.domain;
+
+public class board {
+
+}

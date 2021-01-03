@@ -1,0 +1,18 @@
+package test.remote.board.service.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import test.remote.board.dao.BoardDao;
+import test.remote.board.service.BoardService;
+
+public class BoardServiceImpl implements BoardService{
+	@Autowired
+	BoardDao boardDao;
+	
+	public String getBoardDetailList(String error_type) {
+		
+		
+		return boardDao.selectBoardDetailList(error_type);
+		
+	}
+}

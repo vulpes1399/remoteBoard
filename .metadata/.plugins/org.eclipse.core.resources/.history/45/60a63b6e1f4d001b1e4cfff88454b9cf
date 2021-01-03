@@ -1,0 +1,204 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript"
+	src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+
+<style>
+#main:after {
+    content: '';
+    display: block;
+    clear: both;
+    float: none;
+}
+
+</style>
+
+<body>
+	<div id="main">
+	
+	<div class="clear" style="width: 50%; float: left;">
+		<input id="nowPageNum" type="hidden" value="" />
+		<table id="example_list" style="width: 100%; text-align: center;">
+			<thead>
+				<tr>
+					<th style="width: 25%;">구분</th>
+					<th style="width: 25%;">구역</th>
+					<th style="width: 25%;">c</th>
+					<th style="width: 25%;">d</th>
+				</tr>
+
+				<tr>
+
+					<td><select id="error_type" name="error_type"
+						onchange="viewList(num)">
+							<option value="">직업선택</option>
+							<option value="ELB">ELB</option>
+							<option value="SMPS">SMPS</option>
+							<option value="LAMP">LAMP</option>
+							<option value="통신">통신</option>
+					</select></td>
+
+					<td><select id="sector_area" name="error_type"
+						onchange="viewList(num)">
+							<option value="">직업선택</option>
+							<option value="방화">방화</option>
+							<option value="공원">공원</option>
+					</select></td>
+				<tr>
+			</thead>
+			<tbody id="listTbody">
+
+			</tbody>
+		</table>
+	</div>
+	
+	<div id="detail_info">
+	<h2>상세정보</h2>
+	</div>
+	<!-- <table id="example_detail" style="width: 50%;">
+		<thead>
+			<tr>
+				<th>a</th>
+				<th>b</th>
+				<th>c</th>
+				<th>d</th>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+	</table> -->
+	
+	</div>
+	
+	<div id=paging></div>
+</body>
+
+<script>
+var num = $("#nowPageNum").val();
+function viewList(num){
+	let error_select = $("#error_type").val();
+	let sector_select = $("#sector_area").val();
+	let now_page = num;
+	let error_type = error_select;
+	let sector = sector_select;
+	let filter_data = {'error_type':error_type, 'sector':sector, 'now_page':now_page};
+	
+	$.ajax({
+		url:"/board/dataList",
+		async: true,
+		data: filter_data,
+		dataType: 'json',
+		type: 'GET',
+		success:function(rst){
+			let chgArr = Object.values(rst);
+			let dataList = chgArr[0];
+			let pagingData = Object.values(chgArr[1]);
+			let groupCount = pagingData[3];
+			let totalPageNum = pagingData[4];
+			let startPage = pagingData[5];
+			let endPage = pagingData[6];
+			let prevPage = pagingData[7];
+			let nextPage = pagingData[8];
+			
+			console.log(totalPageNum);
+			
+			// 페이징 넘버 생성
+			createPagingButton(groupCount, totalPageNum, startPage, endPage, prevPage, nextPage);
+			// 데이터 리스트 생성
+			createDataList(dataList);
+				},
+				  error:function(jqXHR, textStatus, errorThrown){ console.log("error \n" + textStatus + " : " + errorThrown);
+			    }
+			});
+	$("#nowPageNum").val(now_page);
+}
+
+function createPagingButton(groupCount, totalPageNum, startPage, endPage, prevPage, nextPage) {
+	// 페이징 버튼 생성
+	$("#paging").empty();
+	if(prevPage > 0){
+		$("#paging").append('<button onClick="prevButtonClick('+prevPage+')" id="prev">[prev]</button>');
+		}
+		if(totalPageNum>groupCount){
+			for(let i=startPage; i<=endPage; i++){
+				$("#paging").append('<button onClick="viewList(this.value)" class="pageNum" value="'+i +'">['+i+']</button>');
+			}
+		}
+		else {
+			for(let i=1; i<=totalPageNum; i++){
+				$("#paging").append('<button onClick="viewList(this.value)" class="pageNum" value="'+i +'">['+i+']</button>');
+			}
+	}
+		if(nextPage>0){
+			$("#paging").append('<button onClick="nextButtonClick('+nextPage+')" id="next">[next]</button>');
+		}
+}
+
+function prevButtonClick(prevNum){
+	$("#paging").empty();
+	viewList(prevNum);
+}
+
+function nextButtonClick(nextNum){
+	$("#paging").empty();
+	viewList(nextNum);
+}
+
+function createDataList(dataList){
+	let rows = [];
+	if (dataList.length > 0) {
+		$("#listTbody").empty();
+		$.each(dataList, (idx, val) => {
+			rows.push([val.error_type, val.sector]);
+		});
+		createTable(rows);
+	}
+}
+
+// 테이블 생성 및 데이터 삽입
+function createTable(rows) {
+	//$("#example_list > tbody").append("<tr role='row'>" + rows+ "</tr>");
+	var tag = "";
+	for (var i = 0; i < rows.length; i++) {
+		tag = "";
+		for (var j = 0; j < rows[i].length; j++) {
+			tag += "<td>" + rows[i][j] + "</td>";
+		}
+		$("#example_list > tbody").append("<tr role='row' onClick='detailView()'>" + tag + "</tr>");
+	}
+
+}
+
+
+
+function createDetailTable(rows) {
+	$("#example_detail > tbody").append("<tr role='row'>" + rows+ "</tr>");
+	var tag = "";
+	for (var i = 0; i < rows.length; i++) {
+		tag = "";
+		for (var j = 0; j < rows[i].length; j++) {
+			tag += "<td>" + rows[i][j] + "</td>";
+		}
+		$("#example_detail > tbody").append("<tr role='row'>" + tag + "</tr>");
+	}
+}
+
+
+function detailView() {
+	$("#detail_info").empty();
+	$("#detail_info").append("test");
+	
+}
+
+$(document).ready(function() {
+	viewList(num);
+});
+
+
+</script>

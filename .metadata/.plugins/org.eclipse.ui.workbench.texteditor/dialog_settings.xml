@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item key="selection" value="example_list"/>
+		<item key="casesensitive" value="true"/>
+		<item key="wholeword" value="true"/>
+		<item key="isRegEx" value="false"/>
+		<list key="findhistory">
+			<item value="example_list"/>
+			<item value="createDetailTable"/>
+			<item value="pageNum"/>
+			<item value="viewList()"/>
+			<item value="pagingNum[4]"/>
+			<item value="pagingData"/>
+			<item value="pagingNum"/>
+			<item value="object"/>
+		</list>
+		<list key="replacehistory">
+		</list>
+	</section>
+</section>

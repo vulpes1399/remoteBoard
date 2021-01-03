@@ -1,0 +1,5 @@
+package test.remote.board.service;
+
+public interface boardService {
+
+}

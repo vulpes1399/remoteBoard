@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="test.remote.board.dao.BoardDao">
+
+<resultMap type="Board" id="boardList">
+<id property="id" column="id"/>
+	<result property="error_type" column="error_type"/>
+</resultMap>
+
+	<select id="selectBoardList" resultType="Board">
+		select * from board;
+	</select>
+	
+	<select id="selectBoardDetailList" parameterType="String" resultType="Board">
+		select * from board where ""=""
+		<if test='error_type != "" or error_type !=null'>
+			and error_type = #{error_type}
+		</if>
+		
+		<if test='sector != "" or sector !=null'>
+			and sector = #{sector}
+		</if>
+
+	</select>
+</mapper>

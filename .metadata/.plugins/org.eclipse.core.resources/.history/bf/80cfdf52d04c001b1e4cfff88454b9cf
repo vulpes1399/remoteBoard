@@ -1,0 +1,11 @@
+package test.remote.board.dao;
+
+import java.util.List;
+
+import test.remote.board.domain.Board;
+
+public interface BoardDao {
+	int boardListCount();
+	List<Board> selectBoardList();
+	List<Board> selectBoardDetailList(String error_type, String sector,  int offset, int listCount);
+}

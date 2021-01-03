@@ -1,0 +1,6 @@
+package test.remote.board.service;
+
+import java.util.ArrayList;
+
+public interface BoardService {
+}

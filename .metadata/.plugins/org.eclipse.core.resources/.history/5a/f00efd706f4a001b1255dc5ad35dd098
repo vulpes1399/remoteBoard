@@ -1,0 +1,17 @@
+package test.remote.board.domain;
+
+public class board {
+	  private int draw;
+	    private int recordsTotal;
+	    private int recordsFiltered;
+
+	    private List data;
+
+	    public List getData(){
+	        if(CollectionUtils.isEmpty(data)){
+	            data = new ArrayList();
+	        }
+	        return data;
+	    }
+
+}
